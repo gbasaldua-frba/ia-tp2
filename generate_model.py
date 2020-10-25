@@ -29,7 +29,7 @@ IMAGE_SHAPE = (30, 30, 3)
 # resolución por los tres colores del formato RGB
 num_inputs = IMAGE_SHAPE[0] * IMAGE_SHAPE[1] * IMAGE_SHAPE[2]
 
-#   Se define la salida, en este caso dos correspondientes a cada clase
+#   Se define la salida, en este caso compuesta por una única neurona
 num_outputs = 1
 
 #   Se definen un total de cuatro capas ocultas con la cantidad de neuronas en
@@ -44,7 +44,6 @@ batchSize = 15
 
 #   Carpetas de Entrenamiento, Prueba y Guardado del modelo
 train_data = './data/train' 
-test_data = './data/test'
 target_dir = './model/'
 
 
@@ -133,6 +132,7 @@ output_img_Lay = Dense(num_outputs, activation=None, name='output')(eachLay) # c
 
 #   Se genera el modelo RNA MLP Backpropagation
 model = Model(input_img_Lay, output_img_Lay, name='RNA')
+#model.compile(optimizer='adam', loss='mse', metrics=['accuracy'])
 model.compile(optimizer='adam', loss='mse', metrics=['accuracy'])
 
 #   Se muestra el resumen del Modelo generado
